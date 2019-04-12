@@ -1,0 +1,4 @@
+Host xxx
+	HostName IP
+	user elias
+	ServerAliveInterval xxx

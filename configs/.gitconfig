@@ -1,0 +1,51 @@
+[User]
+	name = Elias Ramzi
+	email = elias.ramzi@gmail.com
+
+[alias]
+    cp = cherry-pick
+    st = status
+	cl = clone
+	ci = commit
+	co = checkout
+	br = branch 
+	diff = diff --word-diff
+	dc = diff --cached
+	lig = log --pretty=oneline --abbrev-commit --graph
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate # List in short form
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat # List showing changed files
+	lnc = log --pretty=format:"%h\\ %s\\ [%cn]" # no colors for unix pipes
+	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short # list with dates
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative # list with relative dates
+	le = log --oneline --decorate # short log
+	filelog = log -u # history of a file
+	fl = log -u # history of a file
+	dl = "!git ll -1" # show modified files in last commit
+	dlc = diff --cached HEAD^ #diff of last commit
+	dr  = "!f() { git diff "$1"^.."$1"; }; f" # full diff of the commit
+	lc  = "!f() { git ll "$1"^.."$1"; }; f" # full diff of the commit
+	diffr  = "!f() { git diff "$1"^.."$1"; }; f" # full diff of the commit
+	f = "!git ls-files | grep -i" # find files
+	grep = grep -Ii # search entire codebase
+	gr = grep -Ii # search entire codebase
+	gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f" # grep from root folder
+	la = "!git config -l | grep alias | cut -c 7-" # list all aliases
+	done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f" # rename branch to done-branch
+	assume = update-index --assume-unchanged # modify without commiting
+	unassume = update-index --no-assume-unchanged # unassume
+	unassume = update-index --no-assume-unchanged # show assumed
+	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged" # unassume all
+	assumeall = "!git st -s | awk {'print $2'} | xargs git assume" # assume all
+	lasttag = describe --tags --abbrev=0 # show last tag
+	lt = describe --tags --abbrev=0 # show last tag
+	r = reset # reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+	sl = stash list # stash
+	sa = stash apply
+	ss = stash save
+
+
