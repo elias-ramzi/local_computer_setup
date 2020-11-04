@@ -1,4 +1,6 @@
 Host xxx
-	HostName IP
-	user elias
-	ServerAliveInterval xxx
+    hostname xxx
+    user xxx
+    ProxyCommand ssh xxx -W %h:%p
+    LocalForward 600x 127.0.0.1:6006
+    LocalForward 888x 127.0.0.1:8888

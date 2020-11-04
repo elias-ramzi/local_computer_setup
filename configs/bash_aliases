@@ -1,0 +1,6 @@
+alias jn='jupyter notebook'
+alias mkenv='python3 -m venv .venv'
+alias venv='source .venv/bin/activate'
+alias board='tensorboard --logdir ~/experiments/'
+
+alias smi='watch -n 1 nvidia-smi'

@@ -62,7 +62,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,5 +97,33 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.bash_aliases
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+source ~/antigen.zsh
+antigen init ~/.antigenrc
+
+# notebook pimping
+alias jnbe="jupyter nbextension enable"
+function jnb_ext(){
+  pip install jupyter_contrib_nbextensions autopep8
+  jupyter contrib nbextension install --user
+  jnbe notify/notify
+  jnbe snippets/main
+  jnbe code_prettify/autopep8
+  jnbe codefolding/main
+  jnbe hinterland/hinterland
+  jnbe code_prettify/isort
+  jnbe splitcell/splitcell
+}
+
+function cdd(){
+  cd $1
+  source .venv/bin/activate
+}
+
+
+function rsync_rocket {
+    rsync -v --stats --progress -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="data" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" $1 rocket:/home/elias/work/
+}
+
+function rsync_gpu {
+    rsync -v --stats --progress -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="data" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" $2 gpu$1:/home/ramzi_e/dev/
+}

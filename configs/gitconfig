@@ -3,12 +3,13 @@
 	email = elias.ramzi@gmail.com
 
 [alias]
-    cp = cherry-pick
-    st = status
+  cp = cherry-pick
+  st = status
 	cl = clone
-	ci = commit
+	cm = commit
 	co = checkout
-	br = branch 
+	ps = push
+	br = branch
 	diff = diff --word-diff
 	dc = diff --cached
 	lig = log --pretty=oneline --abbrev-commit --graph
@@ -47,5 +48,3 @@
 	sl = stash list # stash
 	sa = stash apply
 	ss = stash save
-
-

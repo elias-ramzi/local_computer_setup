@@ -1,6 +1,7 @@
 language-protobuf
 linter
 linter-pylint
+linter-flake8
 linter-ui-default
 python-autopep8
 python-indent
@@ -8,3 +9,10 @@ python-isort
 sort-lines
 multi-cursor
 git-blame
+sudo apt-get install tmux
+autocomplete-python
+file-icons
+intentions
+kite
+markdown-preview-plus
+minimap
