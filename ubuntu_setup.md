@@ -14,8 +14,8 @@
 
 # Atom
 
-	wget https://atom.io/download/deb ~/Downloads
-	sudo dpkg -i ~/Downloads/atom-amd64.deb
+	wget https://atom.io/download/deb --output ~/Downloads/atom.deb
+	sudo dpkg -i ~/Downloads/atom.deb
 	apm install --package-file atom_package_list.txt
 
 
@@ -40,13 +40,13 @@
 
 
 # Terminal
-    sudo apt-get install zsh
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    chsh -s /usr/bin/zsh
-		cp configs/zshrc ~/.zshrc
-		cp configs/bash_aliases ~/.bash_aliases
-		curl -L git.io/antigen > antigen.zsh
-		cp configs/antigenrc ~/.antigenrc
 		sudo apt-get install terminator
 		sudo apt-get install screen
 		sudo apt-get install tmux
+    sudo apt-get install zsh
+		cp configs/zshrc ~/.zshrc
+		cp configs/bash_aliases ~/.bash_aliases
+		cp configs/antigenrc ~/.antigenrc
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+		curl -L git.io/antigen > antigen.zsh
+		chsh -s /usr/bin/zsh
