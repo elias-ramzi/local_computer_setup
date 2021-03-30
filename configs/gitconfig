@@ -9,6 +9,7 @@
 	cm = commit
 	co = checkout
 	ps = push
+	pl = pull
 	br = branch
 	diff = diff --word-diff
 	dc = diff --cached

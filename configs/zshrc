@@ -129,9 +129,19 @@ function gdrive_download () {
 
 
 function rsync_rocket {
-    rsync -v --stats --progress -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="data" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" $1 rocket:/home/elias/work/
+    rsync --stats -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 rocket:/home/elias/work/
 }
 
 function rsync_gpu {
-    rsync -v --stats --progress -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="data" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" $2 gpu$1:/home/ramzi_e/dev/
+    rsync --stats -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu$2:/users/r/ramzie/dev/
+}
+
+
+function rsync_all_gpu {
+  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu1:/users/r/ramzie/dev/
+  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu2:/users/r/ramzie/dev/
+  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu4:/users/r/ramzie/dev/
+  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu6:/users/r/ramzie/dev/
+  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu7:/users/r/ramzie/dev/
+  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu8:/users/r/ramzie/dev/
 }
