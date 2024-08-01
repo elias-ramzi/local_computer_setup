@@ -1,6 +1,19 @@
+# Python
 alias jn='jupyter notebook'
 alias mkenv='python3 -m venv .venv'
 alias venv='source .venv/bin/activate'
-alias board='tensorboard --logdir ~/experiments/'
+alias board='tensorboard --logdir'
 
+# NVIDIA
 alias smi='watch -n 1 nvidia-smi'
+
+# tmux
+alias asktmux='tmux new -s elias'
+alias joinmux='tmux a -t elias'
+
+# Slurm
+alias jobs='squeue -u $USER'
+
+# Linux
+alias grep='grep --color=auto'
+alias df='df -H'

@@ -2,9 +2,15 @@
 	name = Elias Ramzi
 	email = elias.ramzi@gmail.com
 
+[core]
+	editor = vim
+
+[init]
+	defaultBranch = main
+
 [alias]
-  cp = cherry-pick
-  st = status
+	cp = cherry-pick
+	st = status
 	cl = clone
 	cm = commit
 	co = checkout

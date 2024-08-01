@@ -1,10 +1,18 @@
-# Load bundles from the default repo (oh-my-zsh).
+# Antigenrc
+
+## Load bundles from the default repo (oh-my-zsh)
+
 antigen bundle git
 antigen bundle command-not-found
 antigen bundle docker
-# Load bundles from external repos.
+antigen bundle tmux
+
+## Load bundles from external repos
+
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
-# Tell Antigen that you're done.
+
+## Tell Antigen that you're done
+
 antigen apply

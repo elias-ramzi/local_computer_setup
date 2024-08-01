@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/elias/.oh-my-zsh"
+export ZSH="/home/elias/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -100,6 +100,9 @@ source ~/.bash_aliases
 source ~/antigen.zsh
 antigen init ~/.antigenrc
 
+eval `ssh-agent`
+ssh-add
+
 # notebook pimping
 alias jnbe="jupyter nbextension enable"
 function jnb_ext(){
@@ -115,9 +118,7 @@ function jnb_ext(){
 }
 
 function cdd(){
-  cd dev
-  cd $1
-  source .venv/bin/activate
+  cd ~/dev
 }
 
 
@@ -128,20 +129,19 @@ function gdrive_download () {
 }
 
 
-function rsync_rocket {
-    rsync --stats -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 rocket:/home/elias/work/
-}
-
-function rsync_gpu {
-    rsync --stats -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu$2:/users/r/ramzie/dev/
-}
-
-
-function rsync_all_gpu {
-  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu1:/users/r/ramzie/dev/
-  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu2:/users/r/ramzie/dev/
-  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu4:/users/r/ramzie/dev/
-  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu6:/users/r/ramzie/dev/
-  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu7:/users/r/ramzie/dev/
-  rsync -r --exclude="personnal_experiment" --exclude=".pytest_cache" --exclude="notebooks" --exclude="__pycache__" --exclude="tmp" --exclude=".git" --exclude=".venv" --exclude="build" --exclude="dist" --exclude="structured_ap_loss.egg-info" $1 gpu8:/users/r/ramzie/dev/
+function jz_sync {
+    rsync --stats -r \
+    --exclude="personnal_experiment" \
+    --exclude=".pytest_cache" \
+    --exclude="notebooks" \
+    --exclude="__pycache__" \
+    --exclude="tmp" \
+    --exclude=".git" \
+    --exclude=".venv" \
+    --exclude="venv" \
+    --exclude="build" \
+    --exclude="weights" \
+    --exclude=".idea" \
+    --exclude="*.egg-info" \
+    $1 xxxxs
 }
