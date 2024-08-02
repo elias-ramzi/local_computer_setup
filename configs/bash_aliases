@@ -9,7 +9,9 @@ alias smi='watch -n 1 nvidia-smi'
 
 # tmux
 alias asktmux='tmux new -s elias'
-alias joinmux='tmux a -t elias'
+alias jointmux='tmux a -t elias'
+alias killtmux='tmux kill-session -t elias'
+alias scrtmux='tmux source ~/.tmux.conf'
 
 # Slurm
 alias jobs='squeue -u $USER'
