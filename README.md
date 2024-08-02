@@ -42,7 +42,7 @@ cp configs/bash_aliases ~/.bash_aliases
 
 cp configs/antigenrc ~/.antigenrc
 
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 
 curl -L git.io/antigen > antigen.zsh
 

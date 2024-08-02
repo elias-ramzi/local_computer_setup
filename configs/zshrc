@@ -95,6 +95,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+ZSH_TMUX_AUTOSTART=true
+
 source ~/.bash_aliases
 
 source ~/antigen.zsh
@@ -130,7 +132,7 @@ function gdrive_download () {
 
 
 function jz_sync {
-    rsync --stats -r \
+    rsync --stats -aviur \
     --exclude="personnal_experiment" \
     --exclude=".pytest_cache" \
     --exclude="notebooks" \
