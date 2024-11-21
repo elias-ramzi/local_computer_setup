@@ -105,6 +105,8 @@ antigen init ~/.antigenrc
 eval `ssh-agent`
 ssh-add
 
+tmux source ~/.tmux.conf
+
 # notebook pimping
 alias jnbe="jupyter nbextension enable"
 function jnb_ext(){
@@ -131,19 +133,23 @@ function gdrive_download () {
 }
 
 
+compute(){
+    python -c "print($1)"
+}
+
+
 function jz_sync {
+
+    # check if $2 is empty. If it set it to the default
+    # work directory
+    if [ -z "$2" ]; then
+        work_dir=xxxx
+    else
+        work_dir=$2
+    fi
+
     rsync --stats -aviur \
-    --exclude="personnal_experiment" \
-    --exclude=".pytest_cache" \
-    --exclude="notebooks" \
-    --exclude="__pycache__" \
-    --exclude="tmp" \
     --exclude=".git" \
-    --exclude=".venv" \
-    --exclude="venv" \
-    --exclude="build" \
-    --exclude="weights" \
-    --exclude=".idea" \
-    --exclude="*.egg-info" \
-    $1 xxxxs
+    --filter=':- .gitignore' \
+    $1 _jz:$work_dir
 }
