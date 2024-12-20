@@ -138,6 +138,13 @@ compute(){
 }
 
 
+function _sync {
+    rsync --stats -aviur \
+    --exclude=".git" \
+    --filter=':- .gitignore' \
+    $2 $1:$3
+}
+
 function jz_sync {
 
     # check if $2 is empty. If it set it to the default
@@ -148,8 +155,18 @@ function jz_sync {
         work_dir=$2
     fi
 
-    rsync --stats -aviur \
-    --exclude=".git" \
-    --filter=':- .gitignore' \
-    $1 _jz:$work_dir
+  _sync _jz $1
+}
+
+function leonardo_sync {
+
+    # check if $2 is empty. If it set it to the default
+    # work directory
+    if [ -z "$2" ]; then
+        work_dir=xxxx
+    else
+        work_dir=$2
+    fi
+
+  _sync leonardo $1
 }
