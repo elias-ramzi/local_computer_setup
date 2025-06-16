@@ -102,8 +102,34 @@ source ~/.bash_aliases
 source ~/antigen.zsh
 antigen init ~/.antigenrc
 
-eval `ssh-agent`
-ssh-add
+# Start the SSH agent
+# eval "$(ssh-agent -s)"
+
+# ===============================================
+# SSH annoyances
+export AGENTRCFILE="$HOME/.ssh-agent-$HOSTNAME"
+export AGENTRCFILE_NEW=N
+if [ ! -f "$AGENTRCFILE" ]; then
+  pkill -f ssh-agent &>/dev/null
+fi
+ssh-add -l &>/dev/null
+if [ "$?" != 0 ]; then
+  test -r "$AGENTRCFILE" && eval "$(<$AGENTRCFILE)" >/dev/null
+  ssh-add -l &>/dev/null
+  if [ "$?" != 0 ]; then
+    # permissions = (asked permissions & (~umask))
+    pkill -f ssh-agent &>/dev/null
+    (umask 066; ssh-agent > "$AGENTRCFILE")
+    export AGENTRCFILE_NEW=Y
+    eval "$(<$AGENTRCFILE)" >/dev/null
+    # ssh-add >/dev/null
+    ssh-add ~/.ssh/id_rsa
+    # etc...
+  fi
+fi
+
+# Add SSH keys
+ssh-add ~/.ssh/id_rsa
 
 tmux source ~/.tmux.conf
 
