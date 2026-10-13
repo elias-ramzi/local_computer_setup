@@ -18,7 +18,7 @@ cp configs/gitconfig ~/.gitconfig
 
 ## SSH key
 
-mkdir .ssh
+mkdir ~/.ssh
 <!-- Enter pass phrase when asked -->
 ssh-keygen -t rsa -C "elias.ramzi@gmail.com"
 
