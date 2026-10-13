@@ -70,10 +70,6 @@ chsh -s /usr/bin/zsh
 
 ## Python
 
-sudo apt-get install -y python3-pip
-
-sudo apt-get install -y python3-venv
-
 ### miniforge
 
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O /tmp/miniforge.sh
